@@ -5,9 +5,12 @@ const repositories = document.querySelector("main");
 const year = document.querySelector("#current-year");
 year.textContent = new Date().getFullYear();
 
-btnSearch.addEventListener("click", () => getApiGitHub())
+btnSearch.addEventListener("click", () => { repositories.innerHTML = ""; getApiGitHub() })
 iptUser.addEventListener("keypress", ({ keyCode }) => {
-    if (keyCode === 13) getApiGitHub();
+    if (keyCode === 13) {
+        repositories.innerHTML = "";
+        getApiGitHub();
+    };
 });
 
 function getApiGitHub() {
@@ -23,13 +26,13 @@ function getApiGitHub() {
 
             data.items.map(item => {
 
-                writeRepositories(item.name, item.html_url, item.description)
+                writeRepositories(item.name, item.html_url, item.description, item.has_pages)
 
             })
         });
 }
 
-function writeRepositories(title, github, description) {
+function writeRepositories(title, github, description, has_pages) {
     const card = document.createElement("div");
     const repository = document.createElement("h3");
     const desc = document.createElement("p");
@@ -51,8 +54,9 @@ function writeRepositories(title, github, description) {
     urlTestOnline.target = "_blank";
 
     links.classList = "links";
+    if (has_pages) links.appendChild(urlTestOnline);
     links.appendChild(linkGithub);
-    links.appendChild(urlTestOnline);
+
 
     card.appendChild(repository);
     card.appendChild(desc);
