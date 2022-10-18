@@ -26,13 +26,14 @@ function getApiGitHub() {
 
             data.items.map(item => {
 
-                writeRepositories(item.name, item.html_url, item.description, item.has_pages)
+                writeRepositories(item.name, item.html_url, item.description, item.has_pages, item.owner)
 
             })
-        });
+        })
+        .catch(e => { alert("Usuário Inválido!"); iptUser.value = ""});
 }
 
-function writeRepositories(title, github, description, has_pages) {
+function writeRepositories(title, github, description, has_pages, { login }) {
     const card = document.createElement("div");
     const repository = document.createElement("h3");
     const desc = document.createElement("p");
@@ -50,7 +51,7 @@ function writeRepositories(title, github, description, has_pages) {
     linkGithub.href = github;
 
     urlTestOnline.textContent = "Teste aqui";
-    urlTestOnline.href = "https://iglisson.github.io/" + title;
+    urlTestOnline.href = `https://${login}.github.io/${title}`;
     urlTestOnline.target = "_blank";
 
     links.classList = "links";
