@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./src/styles/style.css">
     <title>Buscar Repositórios</title>
 </head>
+
 <body>
     <div class="container">
         <h1>Buscar repositórios</h1>
         <div class="info">
-            <input type="text" id="username" placeholder="Nome do Usuário" autocomplete="off">
+            <input type="text" id="username" placeholder="Login do GitHub" autocomplete="off">
             <button id="search">Buscar</button>
         </div>
-        <main></main>
+        <main>
+            <section class="user-info"></section>
+            <section class="repositories"></section>
+        </main>
         <footer>
-            <p><a href="https://www.github.com/Iglisson">Iglisson Ruan</a> &copy; <span id="current-year">0000</span></p>
+            <p><a href="https://www.github.com/Iglisson">Iglisson Ruan</a> &copy; <span id="current-year">0000</span>
+            </p>
         </footer>
     </div>
 
-    <script src="./script.js"></script>
+    <script type="module" src="./src/scripts/index.js"></script>
 </body>
+
 </html>
